@@ -1,0 +1,46 @@
+﻿Project 1: Study Buddy
+
+
+Description
+An app that collects a group of users for the purposes of arranging a study group or meet up. The app will take the user’s availability and send the group a list of the most accommodating meeting times. Once a meeting time is chosen by the group, users will enter the location they will be prior to the meeting. The app will generate a list of diplomatic locations to meet at based on user’s locations.
+
+
+User Story
+As group of people who want to meet up, I want to find out the best time and place to meet up so that we don’t waste time figuring it out while being fair to the groups respective schedules.
+
+
+Wireframe or Sketch
+  
+
+
+
+
+
+APIs to be used
+Google Maps API
+Google Calendar
+
+
+Rough breakdown of tasks
+Ian will do half of the work
+David will do the other half
+
+
+
+
+Login/User Registration screen/info
+Group code/user binding logic
+Displaying calendar
+Making it interactive/choosing availability
+Storing avails
+Compairing avails amongst group
+Displaying list of most common avails
+Group voting on best/idea
+Alert/display voted on time for meeting
+Input location prior to meeting
+Approximate avg. location of members
+Search for libraries/coffee shops/study areas within radius of avg location
+User votes on list
+Store location
+Alert location and time chosen
+*export event to google calendar
