@@ -1,20 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Study Buddy!</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script> -->
-</head>
-<body>
-    <h1>Hello World!</h1>
-
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>User Input Fields</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="submitForm.js"></script>
     <!-- Dummy user data -->
     <script src="users.js"></script>
-
     <!-- Dummy user tag data -->
     <script src="usertags.js"></script>
-</body>
+    <!-- Search users and user tags-->
+    <!-- <script src="search.js"></script> -->
+  </head>
+  <body>
+    <div>
+      <h1>Study Buddy</h1>
+      <p>Let us help you find an expert, on your schedule</p>
+    </div>
+
+    <form>
+      <div>
+        <div>
+          <label>
+            First name: <br />
+            <input type="text" id="first-name" placeholder="New" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Last name: <br />
+            <input type="text" id="last-name" placeholder="User" />
+          </label>
+        </div>
+      </div>
+      <div>
+        <label>
+          Email Address: <br />
+          <input type="text" id="email" placeholder="name@email.com" />
+        </label>
+      </div>
+      <div>
+        <label>
+          LinkedIn Profile: <br />
+          <input type="text" id="linkedIn-url" placeholder="Paste URL Here" />
+        </label>
+      </div>
+      <div>
+        <label>
+          What is your general experience level? <br />
+          <form id="experience-level">
+            <input type="radio" name="experience" value="student" />
+            Student<br />
+            <input type="radio" name="experience" value="intermediate" />
+            Intermediate<br />
+            <input type="radio" name="experience" value="master" /> Master
+          </form>
+        </label>
+      </div>
+      <div>
+        <label>
+          What do you want to learn about? <br />
+          <textarea
+            type="text"
+            id="learn-topics"
+            rows="4"
+            cols="50"
+            placeholder="Enter what topics you want to learn here, separated by commas (css, jquery, javascript, etc.)"
+          ></textarea>
+        </label>
+      </div>
+      <div>
+        <input type="submit" id="run-search" value="Find Study Buddy" />
+      </div>
+    </form>
+  </body>
 </html>
