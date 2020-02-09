@@ -21,7 +21,7 @@
       <p>Let us help you find an expert, on your schedule</p>
     </div>
 
-    <form>
+    <form id="user-input">
       <div>
         <div>
           <label>
@@ -50,18 +50,6 @@
       </div>
       <div>
         <label>
-          What is your general experience level? <br />
-          <form id="experience-level">
-            <input type="radio" name="experience" value="student" />
-            Student<br />
-            <input type="radio" name="experience" value="intermediate" />
-            Intermediate<br />
-            <input type="radio" name="experience" value="master" /> Master
-          </form>
-        </label>
-      </div>
-      <div>
-        <label>
           What do you want to learn about? <br />
           <textarea
             type="text"
@@ -73,8 +61,25 @@
         </label>
       </div>
       <div>
-        <input type="submit" id="run-search" value="Find Study Buddy" />
+        <label>
+          What is your general experience level? <br />
+          <form id="experience-level">
+            <input type="radio" name="experience" value="student" />
+            Student<br />
+            <input type="radio" name="experience" value="intermediate" />
+            Intermediate<br />
+            <input type="radio" name="experience" value="master" /> Master
+          </form>
+        </label>
+      </div>
+      <div>
+        <input
+          type="submit"
+          id="create-profile"
+          value="Create Your Study Buddy Profile"
+        />
       </div>
     </form>
+    <input type="button" id="clear-storage" value="Clear Local Storage" />
   </body>
 </html>
