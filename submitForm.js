@@ -1,7 +1,22 @@
 //jquery to collect input fields and put into variables
 
 $(document).ready(function() {
-  $("#run-search").click(function(event) {
+  //This variable will keep track of total number of StudyBuddies and increment when new profile is created
+  //if there is a user count stored, it will load it here. Otherwise, it is set to 0.
+  if (JSON.parse(localStorage.getItem("userCount")) !== null) {
+    var userCount = JSON.parse(localStorage.getItem("userCount"));
+  } else {
+    userCount = 0;
+  }
+
+  //Test userCount at top of app loading
+  console.log("+++++Test UserCount at Top of App+++++");
+  console.log(userCount);
+
+  //this will keep track of the study buddy objects created
+  var userArray = [];
+
+  $("#create-profile").click(function(event) {
     event.preventDefault();
 
     //Collecting input into variables
@@ -18,25 +33,69 @@ $(document).ready(function() {
       "input[name=experience]:checked, #experience-level"
     ).val();
 
-    //This variable will keep track of total number of StudyBuddies and increment when new profile is created
-    var userCount = 0;
-
-    console.log("------Input Tests------");
-    console.log(inputFirstName);
-    console.log(inputLastName);
-    console.log(inputEmail);
-    console.log(inputLinkedInURL);
-    console.log(inputLearningTopics);
-    console.log(inputExpLevel);
-    console.log(userCount);
-    console.log("_______________________");
+    console.log("-----------Input Tests-----------");
+    console.log("Current User Count: " + userCount);
+    console.log("Current Input First Name: " + inputFirstName);
+    console.log("Current Input Last Name: " + inputLastName);
+    console.log("Current Input Email: " + inputEmail);
+    console.log("Current Input LinkedIn url: " + inputLinkedInURL);
+    console.log("Current Input Learning Topics: " + inputLearningTopics);
+    console.log("Current Input Experience Level: " + inputExpLevel);
+    console.log("_________________________________");
 
     createStudyBuddyObj();
+
+    function createStudyBuddyObj() {
+      //grabs these items from localStorage if this is not the first time running the app
+      if (userCount !== 0) {
+        userCount = JSON.parse(localStorage.getItem("userCount"));
+        userArray = JSON.parse(localStorage.getItem("studyBuddies"));
+      }
+      //declares a new StudyBuddy Object
+      var studyBuddy = {
+        id: userCount,
+        firstName: inputFirstName,
+        lastName: inputLastName,
+        email: inputEmail,
+        linkedIn: inputLinkedInURL,
+        learningTags: inputLearningTopics,
+        expLevel: inputExpLevel
+      };
+
+      //increment total number of users created
+      userCount++;
+
+      //Push new Study Buddy to userArray
+      userArray.push(studyBuddy);
+
+      //store studyBuddy array and current userCount in local storage
+      localStorage.setItem("studyBuddies", JSON.stringify(userArray));
+      localStorage.setItem("userCount", JSON.stringify(userCount));
+
+      //clear input fields function
+      $("#user-input").trigger("reset");
+
+      //test objects created in local storage
+      console.log("---Local Storage---");
+      console.log(
+        "User Count: " + JSON.parse(localStorage.getItem("userCount"))
+      );
+      console.log(JSON.parse(localStorage.getItem("studyBuddies")));
+      console.log("-------------------------------");
+    }
   });
 
+  //test function to clear storage and reset the app
+  $("#clear-storage").click(function(event) {
+    $("#user-input").trigger("reset");
+    localStorage.clear();
+  });
   ///////////FUNCTIONS////////////////
 
   //Takes the string of learning topics, separates at comma, and returns array of tags
+  //TO-DO: Split by just commas
+  //Separate/clear white space
+  //if not word/valid tag, clear?
   function topicSeparator(tags) {
     var tagsArray = tags.split(", ");
 
@@ -44,19 +103,4 @@ $(document).ready(function() {
   }
 
   //Creates Study Buddy
-  function createStudyBuddyObj() {
-    //declares a new StudyBuddy Object
-    var studdyBuddy = {
-      id: userCount,
-      firstName: inputFirstName,
-      lastName: inputLastName,
-      email: inputEmail,
-      linkedIn: inputLinkedInURL,
-      learningTags: inputLearningTopics,
-      expLevel: inputExpLevel
-    };
-    userCount++;
-    //clear input fields function
-    //commit it to local storage
-  }
 });
