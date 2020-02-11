@@ -11,7 +11,7 @@ $(document).ready(function() {
 
   //Test userCount at top of app loading
   console.log("+++++Test UserCount at Top of App+++++");
-  console.log(userCount);
+  console.log("Current User Count: " + userCount);
 
   //this will keep track of the study buddy objects created
   var userArray = [];
@@ -23,28 +23,50 @@ $(document).ready(function() {
     var inputFirstName = $("#first-name").val();
     var inputLastName = $("#last-name").val();
     var inputEmail = $("#email").val();
+    //Collects Password and Password Confirmation
+    var inputPassword = $("#password").val();
+    var inputPasswordConfirm = $("#password-confirm").val();
+
+    //Boolean used to test if passowrd is confirmed. Will only create object if confirmed
+    var isPasswordConfirmed = false;
+
     var inputLinkedInURL = $("#linkedIn-url").val();
 
     //Topics are collected via the textbox and separated via topicSeparater function
     var inputLearningTopics = $("#learn-topics").val();
     inputLearningTopics = topicSeparator(inputLearningTopics);
 
-    var inputExpLevel = $(
-      "input[name=experience]:checked, #experience-level"
-    ).val();
+    var inputExpLevel = $("#experience-level option:selected").text();
 
     console.log("-----------Input Tests-----------");
     console.log("Current User Count: " + userCount);
     console.log("Current Input First Name: " + inputFirstName);
     console.log("Current Input Last Name: " + inputLastName);
     console.log("Current Input Email: " + inputEmail);
+    console.log("Current Input Password: " + inputPassword);
+    console.log("Current Input Password-Confirm: " + inputPasswordConfirm);
     console.log("Current Input LinkedIn url: " + inputLinkedInURL);
     console.log("Current Input Learning Topics: " + inputLearningTopics);
     console.log("Current Input Experience Level: " + inputExpLevel);
     console.log("_________________________________");
 
-    createStudyBuddyObj();
+    //Confirms input password and password confirmation are correct
+    passwordCheck(inputPassword, inputPasswordConfirm);
 
+    //Runs only if password is confirmed
+    if (isPasswordConfirmed) {
+      createStudyBuddyObj();
+    }
+
+    function passwordCheck(password, passwordConfirm) {
+      if (password === passwordConfirm) {
+        return (isPasswordConfirmed = true);
+      } else {
+        $("#password-confirm").trigger("reset");
+      }
+    }
+
+    //creates Study Buddy Account Object
     function createStudyBuddyObj() {
       //grabs these items from localStorage if this is not the first time running the app
       if (userCount !== 0) {
@@ -57,6 +79,7 @@ $(document).ready(function() {
         firstName: inputFirstName,
         lastName: inputLastName,
         email: inputEmail,
+        password: inputPassword,
         linkedIn: inputLinkedInURL,
         learningTags: inputLearningTopics,
         expLevel: inputExpLevel
@@ -72,7 +95,7 @@ $(document).ready(function() {
       localStorage.setItem("studyBuddies", JSON.stringify(userArray));
       localStorage.setItem("userCount", JSON.stringify(userCount));
 
-      //clear input fields function
+      //clear input fields function upon successful creation of new account
       $("#user-input").trigger("reset");
 
       //test objects created in local storage
@@ -97,7 +120,7 @@ $(document).ready(function() {
   //Separate/clear white space
   //if not word/valid tag, clear?
   function topicSeparator(tags) {
-    var tagsArray = tags.split(", ");
+    var tagsArray = tags.split(",");
 
     return tagsArray;
   }
