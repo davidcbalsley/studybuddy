@@ -117,6 +117,7 @@ $(document).ready(function() {
     $("#user-input").trigger("reset");
     localStorage.clear();
   });
+
   ///////////FUNCTIONS////////////////
 
   //Takes the string of learning topics, separates at comma, and returns array of tags
