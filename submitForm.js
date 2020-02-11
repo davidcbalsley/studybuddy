@@ -62,7 +62,11 @@ $(document).ready(function() {
       if (password === passwordConfirm) {
         return (isPasswordConfirmed = true);
       } else {
-        $("#password-confirm").trigger("reset");
+        $("#password").addClass("is-danger");
+        $("#password-confirm").addClass("is-danger");
+        $(".password").append(
+          "<p class='help is-danger'>Passwords do not match</p>"
+        );
       }
     }
 
