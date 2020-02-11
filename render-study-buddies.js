@@ -6,7 +6,7 @@ $(document).ready(function() {
         var lastRow = null;         // The last row in a table
 
         // Get list of study buddies from local storage
-        studyBuddies = JSON.parse(localStorage.getItem("study-buddies"));
+        studyBuddies = JSON.parse(localStorage.getItem("studyBuddies"));
         // console.log("studyBuddies = " + studyBuddies); // debug
 
         if (studyBuddies) {
@@ -25,31 +25,27 @@ $(document).ready(function() {
                 // Email address -- put email address in table as mailto link to address
                 newEmailTD = $("<td>");
                 newEmailLink = $("<a>");
-                newEmailLink.text(studyBuddies[i].emailAddress);
-                newEmailLink.attr("href", "mailto:" + studyBuddies[i].emailAddress);
+                newEmailLink.text(studyBuddies[i].email);
+                newEmailLink.attr("href", "mailto:" + studyBuddies[i].email);
                 newEmailTD.append(newEmailLink);
 
                 // LinkedIn profile -- put profile in table as link to LinkedIn profile
                 var newLinkedInTD = $("<td>");
                 newLinkedInLink = $("<a>");
-                newLinkedInLink.text(studyBuddies[i].linkedInProfile);
-                newLinkedInLink.attr("href", studyBuddies[i].linkedInProfile);
+                newLinkedInLink.text(studyBuddies[i].linkedIn);
+                newLinkedInLink.attr("href", studyBuddies[i].linkedIn);
                 newLinkedInTD.append(newLinkedInLink);
-
-                // Experience level
-                var newExperienceTD = $("<td>");
-                newExperienceTD.text(studyBuddies[i].experienceLevel);
 
                 // Interests
                 var newInterestsTD = $("<td>");
                 var currentBuddyInterests = null;
-                if (studyBuddies[i].interests) {
+                if (studyBuddies[i].learningTags) {
 
                     // Create an unordered list of interests
                     var newInterestsUL = $("<ul>");
 
                     // Add each buddy's insterest as a line item to the unordered list
-                    currentBuddyInterests = studyBuddies[i].interests;
+                    currentBuddyInterests = studyBuddies[i].learningTags;
                     for (var j = 0; j < currentBuddyInterests.length; j++) {
                         var newInterestLI = $("<li>");
                         newInterestLI.text(currentBuddyInterests[j]);
@@ -59,8 +55,12 @@ $(document).ready(function() {
                     newInterestsTD.append(newInterestsUL);
                 }
 
+                 // Experience level
+                 var newExperienceTD = $("<td>");
+                 newExperienceTD.text(studyBuddies[i].expLevel);
+
                 // Append fields to new row
-                newRow.append(newFirstNameTD, newLastNameTD, newEmailTD, newLinkedInTD, newExperienceTD, newInterestsTD);
+                newRow.append(newFirstNameTD, newLastNameTD, newEmailTD, newLinkedInTD, newInterestsTD, newExperienceTD);
 
                 // Append fields to newRow
                 $("#study-buddy-table-body").append(newRow);
@@ -86,7 +86,7 @@ $(document).ready(function() {
 
     }
 
-    setSampleStudyBuddy();  // debug
+    // setSampleStudyBuddy();  // debug
 
     renderStudyBuddies();
 });
