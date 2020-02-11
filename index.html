@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>User Input Fields</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
@@ -29,7 +28,7 @@
         <div class="container">
           <h1 class="title">Study Buddy</h1>
           <h2 class="subtitle">The Pair-Programming Partner Finder</h2>
-          <p class="subtitle">"Pair up so you can tear it up"</p>
+          <h3 class="subtitle">"Pair up so you can tear it up"</h3>
         </div>
       </div>
     </section>
@@ -47,6 +46,7 @@
                     type="text"
                     id="first-name"
                     placeholder="New"
+                    required
                   />
                 </div>
               </div>
@@ -58,6 +58,7 @@
                     type="text"
                     id="last-name"
                     placeholder="User"
+                    required
                   />
                 </div>
               </div>
@@ -65,37 +66,49 @@
           </div>
           <div class="field">
             <label class="label"> Email Address: </label>
-            <div class="control">
+            <div class="control has-icons-left">
               <input
                 class="input"
                 type="email"
                 id="email"
                 placeholder="name@email.com"
+                required
               />
+              <span class="icon is-small is-left">
+                <i class="fa fa-envelope"></i>
+              </span>
             </div>
           </div>
           <div class="field">
             <div class="columns">
               <div class="column">
                 <label class="label"> Password: </label>
-                <div class="control">
+                <div class="control has-icons-left">
                   <input
                     class="input"
                     type="password"
                     id="password"
                     placeholder="Please create a new password"
+                    required
                   />
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-lock"></i>
+                  </span>
                 </div>
               </div>
               <div class="column">
                 <label class="label"> Confirm Password: </label>
-                <div class="control password">
+                <div class="control password has-icons-left">
                   <input
                     class="input"
                     type="password"
                     id="password-confirm"
                     placeholder="Please re-enter your password"
+                    required
                   />
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-lock"></i>
+                  </span>
                 </div>
               </div>
             </div>
@@ -140,7 +153,7 @@
           </div>
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-link" id="create-profile">
+              <button class="button is-link is-success" id="create-profile">
                 Create Your Study Buddy Profile
               </button>
             </div>
