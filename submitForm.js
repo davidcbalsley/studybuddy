@@ -56,6 +56,9 @@ $(document).ready(function() {
     //Runs only if password is confirmed
     if (isPasswordConfirmed) {
       createStudyBuddyObj();
+
+      // For now, display list of buddies
+      window.location.replace("study-buddy-list.html");
     }
 
     function passwordCheck(password, passwordConfirm) {
@@ -74,6 +77,7 @@ $(document).ready(function() {
     function createStudyBuddyObj() {
       //grabs these items from localStorage if this is not the first time running the app
       if (userCount !== 0) {
+        console.log("userCount == " + userCount); // debug
         userCount = JSON.parse(localStorage.getItem("userCount"));
         userArray = JSON.parse(localStorage.getItem("studyBuddies"));
       }
