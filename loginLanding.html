@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Log In Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="login.js"></script>
+    <!-- Dummy user data -->
+    <script src="users.js"></script>
+    <!-- Dummy user tag data -->
+    <script src="usertags.js"></script>
+    <!-- Search users and user tags-->
+    <!-- <script src="search.js"></script> -->
+  </head>
+  <body>
+    <section class="hero is-primary is-fullheight">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">Welcome to Study Buddy</h1>
+          <div class="columns is-centered">
+            <div class="column is-desktop is-tablet is mobile">
+              <form class="box">
+                <div class="field">
+                  <label class="label">Email</label>
+                  <div class="control has-icons-left">
+                    <input
+                      class="input"
+                      type="email"
+                      id="email"
+                      placeholder="name@email.com"
+                      required
+                    />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-envelope"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label"> Password: </label>
+                  <div class="control has-icons-left">
+                    <input
+                      class="input"
+                      type="password"
+                      id="login-password"
+                      placeholder="Please create a new password"
+                      required
+                    />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-lock"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="control">
+                    <button
+                      class="button is-link is-success"
+                      id="#login-submit"
+                    >
+                      Login
+                    </button>
+                    <p>
+                      Not registered? <a href="index.html">Create an account</a>
+                    </p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
