@@ -6,6 +6,14 @@
     <title>User Input Fields</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="submitForm.js"></script>
     <!-- Dummy user data -->
@@ -16,70 +24,134 @@
     <!-- <script src="search.js"></script> -->
   </head>
   <body>
-    <div>
-      <h1>Study Buddy</h1>
-      <p>Let us help you find an expert, on your schedule</p>
-    </div>
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">Study Buddy</h1>
+          <h2 class="subtitle">The Pair-Programming Partner Finder</h2>
+          <p class="subtitle">"Pair up so you can tear it up"</p>
+        </div>
+      </div>
+    </section>
 
-    <form id="user-input">
-      <div>
-        <div>
-          <label>
-            First name: <br />
-            <input type="text" id="first-name" placeholder="New" />
-          </label>
-        </div>
-        <div>
-          <label>
-            Last name: <br />
-            <input type="text" id="last-name" placeholder="User" />
-          </label>
-        </div>
+    <section class="section">
+      <div class="container">
+        <form id="user-input">
+          <div class="field">
+            <div class="columns is-mobile">
+              <div class="column">
+                <label class="label"> First Name: </label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="first-name"
+                    placeholder="New"
+                  />
+                </div>
+              </div>
+              <div class="column">
+                <label class="label"> Last Name: </label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="last-name"
+                    placeholder="User"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label"> Email Address: </label>
+            <div class="control">
+              <input
+                class="input"
+                type="email"
+                id="email"
+                placeholder="name@email.com"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <div class="columns">
+              <div class="column">
+                <label class="label"> Password: </label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="password"
+                    id="password"
+                    placeholder="Please create a new password"
+                  />
+                </div>
+              </div>
+              <div class="column">
+                <label class="label"> Confirm Password: </label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="password"
+                    id="password-confirm"
+                    placeholder="Please re-enter your password"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label"> LinkedIn Profile: </label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="linkedIn-url"
+                placeholder="Paste URL Here"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label"> What do you want to learn about? </label>
+            <div class="control">
+              <textarea
+                class="textarea"
+                type="text"
+                id="learn-topics"
+                rows="4"
+                cols="50"
+                placeholder="Enter what topics you want to learn here, separated by commas (css, jquery, javascript, etc.)"
+              ></textarea>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">
+              What is your general experience level?
+            </label>
+            <div class="control">
+              <div class="select">
+                <select id="experience-level">
+                  <option>Student</option>
+                  <option>Intermediate</option>
+                  <option>Master</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link" id="create-profile">
+                Create Your Study Buddy Profile
+              </button>
+            </div>
+            <div class="control">
+              <button class="button is-link is-danger" id="clear-storage">
+                Clear Local Storage
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div>
-        <label>
-          Email Address: <br />
-          <input type="text" id="email" placeholder="name@email.com" />
-        </label>
-      </div>
-      <div>
-        <label>
-          LinkedIn Profile: <br />
-          <input type="text" id="linkedIn-url" placeholder="Paste URL Here" />
-        </label>
-      </div>
-      <div>
-        <label>
-          What do you want to learn about? <br />
-          <textarea
-            type="text"
-            id="learn-topics"
-            rows="4"
-            cols="50"
-            placeholder="Enter what topics you want to learn here, separated by commas (css, jquery, javascript, etc.)"
-          ></textarea>
-        </label>
-      </div>
-      <div>
-        <label>
-          What is your general experience level? <br />
-          <form id="experience-level">
-            <input type="radio" name="experience" value="student" />
-            Student<br />
-            <input type="radio" name="experience" value="intermediate" />
-            Intermediate<br />
-            <input type="radio" name="experience" value="master" /> Master
-          </form>
-        </label>
-      </div>
-      <div>
-        <input
-          type="submit"
-          id="create-profile"
-          value="Create Your Study Buddy Profile"
-        />
-      </div>
-    </form>
-    <input type="button" id="clear-storage" value="Clear Local Storage" />
+    </section>
   </body>
 </html>
