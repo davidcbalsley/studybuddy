@@ -2,7 +2,7 @@ $(document).ready(function() {
   $("#login-submit").click(function(event) {
     event.preventDefault();
 
-    var email = $("#login-email").val();
+    var email = $("#email").val();
     var password = $("#login-password").val();
 
     console.log("Email Login Attempt: " + email);
