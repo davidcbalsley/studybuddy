@@ -53,13 +53,36 @@ $(document).ready(function() {
     //Confirms input password and password confirmation are correct
     passwordCheck(inputPassword, inputPasswordConfirm);
 
-    //Runs only if password is confirmed
-    if (isPasswordConfirmed) {
-      createStudyBuddyObj();
+    // Check email address against mailboxlayer
+    var queryURL = "";
 
-      // For now, display list of buddies
-      window.location.replace("study-buddy-list.html");
-    }
+    queryURL = "https://apilayer.net/api/check?access_key=925cd0ca9a987dc1fba9b9dacafbb597&email=" + inputEmail;
+    // console.log("queryURL = " + queryURL); // debug
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(emailResponse) {
+      // console.log(emailResponse); // debug
+      // debugger; // debug
+      if (!emailResponse.mx_found) {
+        // Highlight the email field 
+        $("#email").addClass("is-danger");
+        // $("#email").append(
+        //   "<p class='help is-danger'>Please check your email address</p>"
+        // );
+
+      } else {
+
+        //Runs only if password is confirmed
+        if (isPasswordConfirmed) {
+          createStudyBuddyObj();
+
+          // For now, display list of buddies
+          window.location.replace("study-buddy-list.html");
+        }
+      }
+    });
 
     function passwordCheck(password, passwordConfirm) {
       if (password === passwordConfirm) {
